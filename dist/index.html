@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f6f8">
-  <script src="app.js?v=themes-4"></script>
+  <script src="app.js?v=theme-icons-5"></script>
   <meta name="description" content="TouchValidator de JABASYS. Graba toques y deslizamientos, guarda tus secuencias y vuelve a ejecutarlas. Disponible para Android con root e iOS con jailbreak.">
   <meta property="og:title" content="TouchValidator — Tus gestos, a tu manera.">
   <meta property="og:description" content="Graba tus gestos. Guarda la secuencia. Elige cuándo y cómo repetirla.">
@@ -16,7 +16,7 @@
   <title>TouchValidator — Tus gestos, a tu manera.</title>
   <link rel="icon" type="image/png" href="assets/brand.png">
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=themes-4">
+  <link rel="stylesheet" href="styles.css?v=theme-icons-5">
   <script src="intro.js?v=silver-3" defer></script>
 </head>
 <body>
@@ -27,9 +27,19 @@
       <nav aria-label="Navegación principal"><a href="#funciones">La app</a><a href="#introduccion">Demostración</a><a href="#preguntas">Preguntas</a></nav>
       <a class="button button-small nav-download" href="#descargar">Descargar <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
       <div class="theme-picker">
-        <label class="visually-hidden" for="theme-select">Apariencia</label>
-        <svg class="theme-symbol" aria-hidden="true"><use id="theme-symbol" href="#icon-system"/></svg>
-        <select id="theme-select" title="Apariencia de la página"><option value="light">Claro</option><option value="dark">Oscuro</option><option value="system" selected>Automático</option></select>
+        <button class="theme-trigger" id="theme-trigger" type="button" aria-label="Cambiar apariencia: Automático" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu">
+          <span class="theme-current-icon"><svg aria-hidden="true"><use id="theme-symbol" href="#icon-system"/></svg></span>
+          <span class="theme-trigger-copy"><small>Apariencia</small><span id="theme-label">Automático</span></span>
+          <svg class="theme-chevron" aria-hidden="true" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg>
+        </button>
+        <div class="theme-menu" id="theme-menu" hidden>
+          <p class="theme-menu-heading">Elige tu estilo</p>
+          <div role="menu" aria-label="Apariencia de la página">
+            <button class="theme-option" type="button" role="menuitemradio" aria-checked="false" tabindex="-1" data-theme-choice="light"><span class="theme-option-icon"><svg aria-hidden="true"><use href="#icon-light"/></svg></span><span class="theme-option-copy"><strong>Claro</strong><small>Un fondo luminoso</small></span><svg class="theme-check" aria-hidden="true"><use href="#icon-check"/></svg></button>
+            <button class="theme-option" type="button" role="menuitemradio" aria-checked="false" tabindex="-1" data-theme-choice="dark"><span class="theme-option-icon"><svg aria-hidden="true"><use href="#icon-dark"/></svg></span><span class="theme-option-copy"><strong>Oscuro</strong><small>Más cómodo de noche</small></span><svg class="theme-check" aria-hidden="true"><use href="#icon-check"/></svg></button>
+            <button class="theme-option" type="button" role="menuitemradio" aria-checked="true" tabindex="-1" data-theme-choice="system"><span class="theme-option-icon"><svg aria-hidden="true"><use href="#icon-system"/></svg></span><span class="theme-option-copy"><strong>Automático</strong><small>Según tu dispositivo</small></span><svg class="theme-check" aria-hidden="true"><use href="#icon-check"/></svg></button>
+          </div>
+        </div>
       </div>
       <button class="menu-toggle" type="button" aria-label="Abrir navegación" aria-expanded="false" aria-controls="mobile-nav"><svg aria-hidden="true"><use href="#icon-menu"/></svg></button>
     </div>

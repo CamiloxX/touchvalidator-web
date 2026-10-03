@@ -12,19 +12,70 @@
     const theme = preference === "dark" || preference === "system" && systemTheme.matches ? "dark" : "light";
     root.dataset.theme = theme;
     root.dataset.themePreference = preference;
-    const select = document.getElementById("theme-select");
-    if (select) {
-      select.value = preference;
-      select.title = preference === "system" ? "Automático: sigue el tema del dispositivo" : preference === "dark" ? "Modo oscuro" : "Modo claro";
+    const trigger = document.getElementById("theme-trigger");
+    if (trigger) {
+      const label = {light: "Claro", dark: "Oscuro", system: "Automático"}[preference];
+      trigger.setAttribute("aria-label", `Cambiar apariencia: ${label}`);
+      trigger.title = preference === "system" ? "Automático: sigue el tema del dispositivo" : preference === "dark" ? "Modo oscuro" : "Modo claro";
+      document.getElementById("theme-label").textContent = label;
       document.getElementById("theme-symbol").setAttribute("href", `#icon-${preference}`);
+      document.querySelectorAll("[data-theme-choice]").forEach(option => {
+        option.setAttribute("aria-checked", String(option.dataset.themeChoice === preference));
+      });
     }
     document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#0d1015" : "#f5f6f8";
     if (persist) { try { localStorage.setItem(storageKey, preference); } catch {} }
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    const select = document.getElementById("theme-select");
-    select.addEventListener("change", () => applyTheme(select.value, true));
+    const picker = document.querySelector(".theme-picker");
+    const trigger = document.getElementById("theme-trigger");
+    const menu = document.getElementById("theme-menu");
+    const options = [...picker.querySelectorAll("[data-theme-choice]")];
+    function closeThemeMenu(returnFocus = false) {
+      menu.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+      if (returnFocus) trigger.focus();
+    }
+    function openThemeMenu() {
+      const mobileToggle = document.querySelector(".menu-toggle");
+      if (mobileToggle.getAttribute("aria-expanded") === "true") mobileToggle.click();
+      menu.hidden = false;
+      trigger.setAttribute("aria-expanded", "true");
+      options.find(option => option.dataset.themeChoice === preference).focus();
+    }
+    trigger.addEventListener("click", () => menu.hidden ? openThemeMenu() : closeThemeMenu());
+    trigger.addEventListener("keydown", event => {
+      if (["ArrowDown", "ArrowUp"].includes(event.key)) {
+        event.preventDefault();
+        event.stopPropagation();
+        openThemeMenu();
+      }
+    });
+    options.forEach(option => option.addEventListener("click", () => {
+      applyTheme(option.dataset.themeChoice, true);
+      closeThemeMenu(true);
+    }));
+    picker.addEventListener("keydown", event => {
+      if (menu.hidden) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeThemeMenu(true);
+      } else if (event.key === "Tab") {
+        closeThemeMenu(true);
+      } else if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+        event.preventDefault();
+        const index = options.indexOf(document.activeElement);
+        const next = event.key === "Home" ? 0 : event.key === "End" ? options.length - 1 : (index + (event.key === "ArrowDown" ? 1 : -1) + options.length) % options.length;
+        options[next].focus();
+      }
+    });
+    document.addEventListener("pointerdown", event => {
+      if (!picker.contains(event.target)) closeThemeMenu();
+    });
+    picker.addEventListener("focusout", event => {
+      if (!picker.contains(event.relatedTarget)) closeThemeMenu();
+    });
     applyTheme(preference);
   }, {once: true});
   systemTheme.addEventListener("change", () => { if (preference === "system") applyTheme("system"); });
