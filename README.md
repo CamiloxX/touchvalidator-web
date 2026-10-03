@@ -39,7 +39,7 @@ node --check dist/app.js
 node --check dist/intro.js
 ```
 
-La demostración dura 26 segundos y tiene controles de pausa, reinicio y avance por teclado. Se detiene cuando deja de estar visible y respeta la preferencia de reducir movimiento. La galería, el menú móvil, las pestañas Android/iOS y los acordeones permiten navegar con teclado.
+La demostración dura 26 segundos: una mano ilustrada realiza toques con ondas de contacto y un deslizamiento con rastro luminoso. El panel flotante muestra el inicio de grabación, el guardado y la reproducción, incluida una pausa con Volumen abajo y la continuación de la sesión. Tiene controles de pausa, reinicio y avance por teclado. Se detiene cuando deja de estar visible y respeta la preferencia de reducir movimiento. La galería, el menú móvil, las pestañas Android/iOS y los acordeones permiten navegar con teclado.
 
 ## Descargas
 
