@@ -1,0 +1,6 @@
+.sites-runtime/
+.openai/
+*.tar.gz
+*.zip
+qa/
+node_modules/

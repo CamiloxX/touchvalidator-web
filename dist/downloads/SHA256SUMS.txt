@@ -1,0 +1,2 @@
+35d21032356800a84055e69d00f6887ad5c9b01ae268b27575c57ad4c5083aa9  TouchValidator-Android-0.1.10.apk
+4140c1adaed47a3568844ab5c04d0ae74edd7ea6001be10d96b252d9a1116a0d  TouchValidator-iOS-0.10.1.deb

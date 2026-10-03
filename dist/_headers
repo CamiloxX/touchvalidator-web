@@ -1,0 +1,12 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+/downloads/TouchValidator-Android-0.1.10.apk
+  Content-Type: application/vnd.android.package-archive
+  Content-Disposition: attachment; filename="TouchValidator-Android-0.1.10.apk"
+/downloads/TouchValidator-iOS-0.10.1.deb
+  Content-Type: application/vnd.debian.binary-package
+  Content-Disposition: attachment; filename="TouchValidator-iOS-0.10.1.deb"
