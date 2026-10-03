@@ -8,6 +8,8 @@ Sitio de presentación de TouchValidator, con capturas reales de la app, demostr
 
 Diseño adaptable a móvil y escritorio, con una paleta de negro, gris y plata basada en el logo de JABASYS. HTML, CSS y JavaScript sin dependencias ni compilación; tipografía Manrope y recursos alojados en la propia web. La licencia de la tipografía está en `dist/assets/fonts/OFL.txt`.
 
+El selector «Apariencia» de la cabecera ofrece los modos claro, oscuro y automático. La elección se guarda en el navegador, se sincroniza entre pestañas de esta web y se aplica antes de mostrar la página. En automático, la apariencia sigue los cambios del tema del dispositivo.
+
 ## Vista local
 
 Desde la carpeta del proyecto:

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f6f8">
+  <script src="app.js?v=themes-4"></script>
   <meta name="description" content="TouchValidator de JABASYS. Graba toques y deslizamientos, guarda tus secuencias y vuelve a ejecutarlas. Disponible para Android con root e iOS con jailbreak.">
   <meta property="og:title" content="TouchValidator — Tus gestos, a tu manera.">
   <meta property="og:description" content="Graba tus gestos. Guarda la secuencia. Elige cuándo y cómo repetirla.">
@@ -15,8 +16,7 @@
   <title>TouchValidator — Tus gestos, a tu manera.</title>
   <link rel="icon" type="image/png" href="assets/brand.png">
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=silver-3">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=themes-4">
   <script src="intro.js?v=silver-3" defer></script>
 </head>
 <body>
@@ -26,6 +26,11 @@
       <a class="brand" href="#inicio" aria-label="TouchValidator, inicio"><img src="assets/brand.png" alt="" width="38" height="38"><span>TouchValidator<small>UN PROYECTO DE JABASYS</small></span></a>
       <nav aria-label="Navegación principal"><a href="#funciones">La app</a><a href="#introduccion">Demostración</a><a href="#preguntas">Preguntas</a></nav>
       <a class="button button-small nav-download" href="#descargar">Descargar <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <div class="theme-picker">
+        <label class="visually-hidden" for="theme-select">Apariencia</label>
+        <svg class="theme-symbol" aria-hidden="true"><use id="theme-symbol" href="#icon-system"/></svg>
+        <select id="theme-select" title="Apariencia de la página"><option value="light">Claro</option><option value="dark">Oscuro</option><option value="system" selected>Automático</option></select>
+      </div>
       <button class="menu-toggle" type="button" aria-label="Abrir navegación" aria-expanded="false" aria-controls="mobile-nav"><svg aria-hidden="true"><use href="#icon-menu"/></svg></button>
     </div>
     <nav id="mobile-nav" class="mobile-nav" aria-label="Navegación móvil" hidden><a href="#funciones">La app</a><a href="#introduccion">Demostración</a><a href="#preguntas">Preguntas</a><a href="#descargar">Descargar</a></nav>
@@ -106,6 +111,9 @@
     <symbol id="icon-up" viewBox="0 0 24 24"><path d="M12 20V4m-6 6 6-6 6 6"/></symbol>
     <symbol id="icon-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
     <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/></symbol>
+    <symbol id="icon-light" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="icon-dark" viewBox="0 0 24 24"><path d="M20.5 13.5A9 9 0 0 1 10.5 3a9 9 0 1 0 10 10.5Z"/></symbol>
+    <symbol id="icon-system" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol>
     <symbol id="icon-touch" viewBox="0 0 24 24"><path d="M9 12V6a2 2 0 0 1 4 0v6l2-1 2 1 2 1v4l-3 5H9l-5-7a2 2 0 0 1 3-2l2 2M4 7a7 7 0 0 1 14-1"/></symbol>
     <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
     <symbol id="icon-library" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 13h8m-8 4h5"/></symbol>
