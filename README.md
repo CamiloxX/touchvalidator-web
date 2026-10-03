@@ -2,6 +2,10 @@
 
 Sitio de presentación de TouchValidator, con capturas reales de la app, demostración animada, requisitos y descargas de prueba para Android e iOS.
 
+**Web:** https://camiloxx.github.io/touchvalidator-web/
+
+**Repositorio:** https://github.com/CamiloxX/touchvalidator-web
+
 Diseño adaptable a móvil y escritorio. HTML, CSS y JavaScript sin dependencias ni compilación; tipografías del sistema y recursos locales.
 
 ## Vista local
