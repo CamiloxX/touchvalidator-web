@@ -39,7 +39,7 @@
     if (stroke) {ctx.strokeStyle = stroke; ctx.lineWidth = 1.5; ctx.stroke();}
   }
   function text(value, x, y, size = 22, color = ink, weight = 500, align = "left") {
-    ctx.font = `${weight} ${size}px "Segoe UI", Arial, sans-serif`;
+    ctx.font = `${weight} ${size}px "Manrope", "Segoe UI", Arial, sans-serif`;
     ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = "alphabetic";
     ctx.fillText(value, x, y);
   }
@@ -310,4 +310,5 @@
   }, {threshold: 0.2}).observe(canvas);
   logo.onload = render; logo.src = "assets/brand.png";
   resize(); update();
+  document.fonts.ready.then(render);
 })();

@@ -6,7 +6,7 @@ Sitio de presentación de TouchValidator, con capturas reales de la app, demostr
 
 **Repositorio:** https://github.com/CamiloxX/touchvalidator-web
 
-Diseño adaptable a móvil y escritorio. HTML, CSS y JavaScript sin dependencias ni compilación; tipografías del sistema y recursos locales.
+Diseño adaptable a móvil y escritorio. HTML, CSS y JavaScript sin dependencias ni compilación; tipografía Manrope y recursos alojados en la propia web. La licencia de la tipografía está en `dist/assets/fonts/OFL.txt`.
 
 ## Vista local
 

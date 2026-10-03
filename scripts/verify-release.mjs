@@ -9,6 +9,7 @@ const root = path.join(site, "dist");
 const allowed = new Set([
   "index.html", "styles.css", "app.js", "intro.js", "_headers",
   "assets/brand.png", "assets/home.png", "assets/library.png", "assets/playback.png",
+  "assets/fonts/manrope-latin.woff2", "assets/fonts/OFL.txt",
   "downloads/TouchValidator-Android-0.1.10.apk",
   "downloads/TouchValidator-iOS-0.10.1.deb", "downloads/SHA256SUMS.txt"
 ]);
