@@ -6,7 +6,7 @@ Sitio de presentación de TouchValidator, con capturas reales de la app, demostr
 
 **Repositorio:** https://github.com/CamiloxX/touchvalidator-web
 
-Diseño adaptable a móvil y escritorio. HTML, CSS y JavaScript sin dependencias ni compilación; tipografía Manrope y recursos alojados en la propia web. La licencia de la tipografía está en `dist/assets/fonts/OFL.txt`.
+Diseño adaptable a móvil y escritorio, con una paleta de negro, gris y plata basada en el logo de JABASYS. HTML, CSS y JavaScript sin dependencias ni compilación; tipografía Manrope y recursos alojados en la propia web. La licencia de la tipografía está en `dist/assets/fonts/OFL.txt`.
 
 ## Vista local
 

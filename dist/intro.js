@@ -13,11 +13,11 @@
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const logo = new Image();
   const duration = 26;
-  const ink = "#f3faf5";
-  const mint = "#91f5b6";
-  const panelMint = "#67e8bf";
-  const coral = "#efa988";
-  const muted = "#9bb3a4";
+  const ink = "#f6f7fa";
+  const silver = "#d2d9e4";
+  const panelSilver = "#d8dfe9";
+  const recordAccent = "#b8c2cf";
+  const muted = "#a0a8b4";
   let width = 1280, height = 720, portrait = false;
   let position = 0, frameId = 0, lastTime = 0;
   let playing = false, wanted = false, visible = false, started = false;
@@ -55,15 +55,15 @@
   }
   function brand(x, y, size) {
     ctx.save();
-    ctx.shadowColor = "#91f5b63a"; ctx.shadowBlur = size * 0.36;
-    box(x, y, size, size, size * 0.24, "#101816", "#476750");
+    ctx.shadowColor = "#d2d9e43a"; ctx.shadowBlur = size * 0.36;
+    box(x, y, size, size, size * 0.24, "#11151b", "#5b6573");
     ctx.shadowBlur = 0;
     ctx.beginPath(); ctx.roundRect(x + 2, y + 2, size - 4, size - 4, size * 0.23); ctx.clip();
     if (logo.complete && logo.naturalWidth) ctx.drawImage(logo, x + 2, y + 2, size - 4, size - 4);
     else text("T", x + size / 2, y + size * 0.73, size * 0.58, ink, 650, "center");
     ctx.restore();
   }
-  function check(x, y, amount, color = mint) {
+  function check(x, y, amount, color = silver) {
     const points = [[x - 9, y], [x - 2, y + 7], [x + 12, y - 9]];
     const p = clamp(amount) * 2;
     ctx.beginPath(); ctx.moveTo(...points[0]);
@@ -76,25 +76,25 @@
 
   function background(t) {
     const fill = ctx.createLinearGradient(0, 0, width, height);
-    fill.addColorStop(0, "#0b1410"); fill.addColorStop(0.55, "#10231a"); fill.addColorStop(1, "#07100d");
+    fill.addColorStop(0, "#0c0e12"); fill.addColorStop(0.55, "#171b22"); fill.addColorStop(1, "#080a0d");
     ctx.fillStyle = fill; ctx.fillRect(0, 0, width, height);
     const glow = ctx.createRadialGradient(width * 0.72, height * 0.5, 10, width * 0.72, height * 0.5, width * 0.6);
-    glow.addColorStop(0, "#81efaa17"); glow.addColorStop(1, "#81efaa00");
+    glow.addColorStop(0, "#b6c0ce17"); glow.addColorStop(1, "#b6c0ce00");
     ctx.fillStyle = glow; ctx.fillRect(0, 0, width, height);
-    for (let x = 28; x < width; x += 42) for (let y = 28; y < height; y += 42) circle(x, y, 0.8, "#9ad4ae13");
+    for (let x = 28; x < width; x += 42) for (let y = 28; y < height; y += 42) circle(x, y, 0.8, "#c4cedb13");
     ctx.save(); ctx.translate(width * 0.74, height * 0.51); ctx.rotate(t * 0.025);
-    ctx.strokeStyle = "#89e2a819"; ctx.lineWidth = 1; ctx.setLineDash([5, 15]);
+    ctx.strokeStyle = "#c5d0df19"; ctx.lineWidth = 1; ctx.setLineDash([5, 15]);
     ctx.beginPath(); ctx.ellipse(0, 0, width * 0.32, height * 0.49, -0.45, 0, Math.PI * 2); ctx.stroke();
     ctx.restore();
     // Fixed seeds keep every particle in the same place when seeking or replaying.
     for (let i = 0; i < 25; i++) {
       const x = ((i * 173.7 + t * (4 + i % 4)) % (width + 80)) - 40;
       const y = height * (0.12 + ((i * 0.137) % 0.78)) + Math.sin(t * 0.4 + i) * 18;
-      circle(x, y, i % 6 === 0 ? 2.1 : 1, `rgba(166,224,187,${0.10 + Math.sin(i + t * 0.5) * 0.05})`);
+      circle(x, y, i % 6 === 0 ? 2.1 : 1, `rgba(198,207,219,${0.10 + Math.sin(i + t * 0.5) * 0.05})`);
     }
     ctx.save();
     const light = ctx.createLinearGradient(0, 0, width, height);
-    light.addColorStop(0, "#b5f1cb00"); light.addColorStop(0.5, "#b5f1cb0b"); light.addColorStop(1, "#b5f1cb00");
+    light.addColorStop(0, "#d9e1eb00"); light.addColorStop(0.5, "#d9e1eb0b"); light.addColorStop(1, "#d9e1eb00");
     ctx.strokeStyle = light; ctx.lineWidth = portrait ? 54 : 90;
     ctx.beginPath(); ctx.moveTo(-120, height * 0.8);
     ctx.bezierCurveTo(width * 0.3, height * 0.6, width * 0.5, height * 0.2, width + 100, height * 0.1);
@@ -108,8 +108,8 @@
     const size = portrait ? 134 : 112;
     const base = portrait ? 264 : 167;
     const pulse = Math.sin(t * 1.3) * 5;
-    circle(center, base + size / 2, size * 0.89 + pulse, "#91f5b628", 1);
-    circle(center, base + size / 2, size * 1.2 - pulse, "#91f5b613", 1);
+    circle(center, base + size / 2, size * 0.89 + pulse, "#d2d9e428", 1);
+    circle(center, base + size / 2, size * 1.2 - pulse, "#d2d9e413", 1);
     ctx.save();
     const entrance = closing ? smooth(22.35, 23.35, t) : smooth(0, 1.1, t);
     ctx.translate(center, base + size / 2);
@@ -120,20 +120,20 @@
     text(closing ? "TU PRÓXIMA RUTINA" : "JABASYS PRESENTA", center, base - 48, portrait ? 19 : 16, muted, 600, "center");
     if (closing) {
       text("Graba una vez.", center, base + size + (portrait ? 107 : 92), portrait ? 69 : 70, ink, 650, "center");
-      text("Repite a tu ritmo.", center, base + size + (portrait ? 191 : 178), portrait ? 65 : 70, mint, 650, "center");
+      text("Repite a tu ritmo.", center, base + size + (portrait ? 191 : 178), portrait ? 65 : 70, silver, 650, "center");
       text("TouchValidator · by JABASYS", center, base + size + (portrait ? 272 : 248), portrait ? 25 : 22, muted, 400, "center");
-      box(center - 109, base + size + (portrait ? 331 : 295), 218, 45, 22, "#91f5b614", "#496a54");
-      text("GRABA / GUARDA / REPITE", center, base + size + (portrait ? 360 : 324), 13, mint, 600, "center");
+      box(center - 109, base + size + (portrait ? 331 : 295), 218, 45, 22, "#d2d9e414", "#5c6675");
+      text("GRABA / GUARDA / REPITE", center, base + size + (portrait ? 360 : 324), 13, silver, 600, "center");
     } else {
       text("TouchValidator", center, base + size + (portrait ? 115 : 105), portrait ? 72 : 86, ink, 650, "center");
       text("Graba una vez.", center, base + size + (portrait ? 194 : 164), portrait ? 32 : 26, muted, 400, "center");
-      text("Repite a tu ritmo.", center, base + size + (portrait ? 240 : 202), portrait ? 32 : 26, mint, 500, "center");
+      text("Repite a tu ritmo.", center, base + size + (portrait ? 240 : 202), portrait ? 32 : 26, silver, 500, "center");
       const load = smooth(0, 2.5, t);
-      box(center - 60, base + size + (portrait ? 296 : 253), 120, 3, 2, "#304e3a");
-      if (load > 0) box(center - 60, base + size + (portrait ? 296 : 253), 120 * load, 3, 2, mint);
+      box(center - 60, base + size + (portrait ? 296 : 253), 120, 3, 2, "#353d49");
+      if (load > 0) box(center - 60, base + size + (portrait ? 296 : 253), 120 * load, 3, 2, silver);
     }
     const trace = closing ? 1 : smooth(0.2, 2.6, t);
-    ctx.save(); ctx.globalAlpha *= 0.38; ctx.strokeStyle = mint; ctx.lineWidth = 2;
+    ctx.save(); ctx.globalAlpha *= 0.38; ctx.strokeStyle = silver; ctx.lineWidth = 2;
     ctx.beginPath();
     for (let i = 0; i <= Math.ceil(trace * 100); i++) {
       const p = i / 100;
@@ -157,7 +157,7 @@
     return (u >= 0.7 ? 1 : 0) + (u >= 4.4 ? 1 : 0) + (u >= 5.2 ? 1 : 0);
   }
 
-  function icon(kind, x, y, color = panelMint, size = 16) {
+  function icon(kind, x, y, color = panelSilver, size = 16) {
     ctx.save(); ctx.translate(x, y); ctx.scale(size / 24, size / 24);
     ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 1.8; ctx.lineCap = "round"; ctx.lineJoin = "round";
     if (kind === "record") circle(0, 0, 5.5, color);
@@ -179,7 +179,7 @@
     ctx.restore();
   }
 
-  function particles(x, y, age, color = panelMint) {
+  function particles(x, y, age, color = panelSilver) {
     if (age < 0 || age > 1.15) return;
     ctx.save(); ctx.globalAlpha *= (1 - smooth(0.5, 1.15, age));
     for (let i = 0; i < 14; i++) {
@@ -188,7 +188,7 @@
       const px = x + Math.cos(angle) * speed * age;
       const py = y + Math.sin(angle) * speed * age + age * age * 26;
       ctx.save(); ctx.translate(px, py); ctx.rotate(angle + age * 2);
-      box(-1.4, -1.4, i % 3 === 0 ? 5 : 2.8, 2.8, 1, i % 4 === 0 ? "#eaf8ed" : color);
+      box(-1.4, -1.4, i % 3 === 0 ? 5 : 2.8, 2.8, 1, i % 4 === 0 ? "#f2f5fa" : color);
       ctx.restore();
     }
     ctx.restore();
@@ -221,8 +221,8 @@
     ctx.moveTo(13, 151); ctx.quadraticCurveTo(29, 140, 53, 146); ctx.stroke();
     ctx.strokeStyle = "#fffdf3a0"; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(-7, 39); ctx.lineTo(-7, 104); ctx.stroke();
-    box(4, 175, 56, 27, 5, "#294335", "#6b977d");
-    box(7, 178, 50, 3, 1, "#91f5b68c"); circle(50, 191, 2, "#d5e9db");
+    box(4, 175, 56, 27, 5, "#303844", "#8793a5");
+    box(7, 178, 50, 3, 1, "#d2d9e48c"); circle(50, 191, 2, "#dbe3ed");
     ctx.restore();
   }
 
@@ -250,10 +250,10 @@
 
   function panelButton(x, y, w, label, kind, primary, press = 0) {
     const shift = press * 1.5;
-    box(x, y + shift, w, 40, 10, primary ? panelMint : "#1f303d", primary ? null : "#364c5d");
+    box(x, y + shift, w, 40, 10, primary ? panelSilver : "#262c35", primary ? null : "#454e5b");
     if (press > 0.01) box(x + 2, y + shift + 2, w - 4, 36, 8, `rgba(255,255,255,${press * 0.24})`);
-    icon(kind, x + 21, y + 20 + shift, primary ? "#14202b" : panelMint, 15);
-    text(label, x + w / 2 + 7, y + 25 + shift, 12, primary ? "#14202b" : ink, 650, "center");
+    icon(kind, x + 21, y + 20 + shift, primary ? "#171b22" : panelSilver, 15);
+    text(label, x + w / 2 + 7, y + 25 + shift, 12, primary ? "#171b22" : ink, 650, "center");
   }
 
   function floatingPanel(t, phase, raw) {
@@ -269,19 +269,19 @@
     const h = mix(82, mode === "pause" ? 250 : 248, expansion);
     ctx.save();
     ctx.shadowColor = "#00000085"; ctx.shadowBlur = 22; ctx.shadowOffsetX = 5; ctx.shadowOffsetY = 10;
-    box(x, y, w, h, 18, "#14202bf5", "#3c5b68");
+    box(x, y, w, h, 18, "#171b22f5", "#58616e");
     ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0;
     // A bright top edge and drag grip give the panel a separate physical layer.
-    box(x + 108, y + 6, 54, 3, 2, "#a8baca45");
+    box(x + 108, y + 6, 54, 3, 2, "#bcc5d245");
     if (expansion > 0.01) {
       ctx.save(); ctx.globalAlpha *= expansion;
       brand(x + 15, y + 16, 25);
-      text("TOUCHVALIDATOR", x + 50, y + 25, 8, panelMint, 700);
+      text("TOUCHVALIDATOR", x + 50, y + 25, 8, panelSilver, 700);
       text("Panel de sesión", x + 50, y + 39, 11, ink, 600);
       text("−", x + w - 41, y + 34, 18, muted, 400, "center");
       text("×", x + w - 21, y + 34, 17, muted, 400, "center");
       ctx.beginPath(); ctx.moveTo(x + 14, y + 54); ctx.lineTo(x + w - 14, y + 54);
-      ctx.strokeStyle = "#344b5c"; ctx.lineWidth = 1; ctx.stroke();
+      ctx.strokeStyle = "#3e4652"; ctx.lineWidth = 1; ctx.stroke();
       ctx.beginPath(); ctx.rect(x + 10, y + 57, w - 20, Math.max(0, h - 64)); ctx.clip();
       if (mode === "pause") {
         text("La sesión está pausada", x + 15, y + 81, 16, ink, 650);
@@ -291,20 +291,20 @@
         text("Paso 2 / 3 · Ciclo 2 / 2", x + w / 2, y + 235, 10, muted, 400, "center");
       } else if (mode === "save" && t >= 12.4) {
         const pop = smooth(12.4, 12.8, t);
-        circle(x + w / 2, y + 98, 21 + pop * 5, "#67e8bf18");
-        check(x + w / 2, y + 98, smooth(12.4, 12.7, t), panelMint);
+        circle(x + w / 2, y + 98, 21 + pop * 5, "#d8dfe918");
+        check(x + w / 2, y + 98, smooth(12.4, 12.7, t), panelSilver);
         text("Rutina 01", x + w / 2, y + 146, 23, ink, 650, "center");
         text("3 pasos guardados", x + w / 2, y + 173, 12, muted, 400, "center");
-        box(x + 22, y + 190, w - 44, 31, 8, "#23433c");
-        text("Lista en tu biblioteca", x + w / 2, y + 210, 11, panelMint, 600, "center");
+        box(x + 22, y + 190, w - 44, 31, 8, "#303a45");
+        text("Lista en tu biblioteca", x + w / 2, y + 210, 11, panelSilver, 600, "center");
       } else {
         text(mode === "save" ? "Guardar grabación" : mode === "play" ? "Grabación seleccionada" : "Nueva grabación", x + 15, y + 79, 16, ink, 650);
-        box(x + 15, y + 94, w - 30, 38, 8, "#1f303d", mode === "save" ? "#67e8bf" : "#364c5d");
+        box(x + 15, y + 94, w - 30, 38, 8, "#262c35", mode === "save" ? "#d8dfe9" : "#454e5b");
         const name = mode === "save" ? "Rutina 01".slice(0, Math.round(9 * smooth(10.45, 11.5, t))) : "Rutina 01";
         text(name || "Nombre de la grabación", x + 28, y + 118, 13, name ? ink : muted, 500);
         if (mode === "save" && t < 11.65 && Math.sin(t * 12) > 0) {
           ctx.beginPath(); ctx.moveTo(x + 29 + ctx.measureText(name).width, y + 104); ctx.lineTo(x + 29 + ctx.measureText(name).width, y + 121);
-          ctx.strokeStyle = panelMint; ctx.lineWidth = 1; ctx.stroke();
+          ctx.strokeStyle = panelSilver; ctx.lineWidth = 1; ctx.stroke();
         }
         const press = mode === "save" ? pulse(t, 12.25) : mode === "play" ? pulse(t, 14.15) : pulse(t, 4.12);
         panelButton(x + 15, y + 150, w - 30, mode === "save" ? "Guardar grabación" : mode === "play" ? "Iniciar sesión" : "Comenzar a grabar", mode === "save" ? "check" : mode === "play" ? "play" : "record", true, press);
@@ -314,13 +314,13 @@
     }
     if (expansion < 0.99) {
       ctx.save(); ctx.globalAlpha *= 1 - expansion;
-      const recording = phase === "record", color = recording ? coral : state.paused ? muted : panelMint;
+      const recording = phase === "record", color = recording ? recordAccent : state.paused ? muted : panelSilver;
       circle(x + 18, y + 24, 3.4, color);
       text(recording ? "GRABACIÓN GENERAL" : state.finished ? "SECUENCIA COMPLETADA" : state.paused ? "SESIÓN PAUSADA" : "SESIÓN EN CURSO", x + 29, y + 28, 9, color, 700);
       const count = capturedSteps(raw);
       text(recording ? `${count} ${count === 1 ? "paso capturado" : "pasos capturados"}` : state.finished ? "2 ciclos completados" : `Ciclo ${state.cycle} / 2 · Paso ${count} / 3`, x + 16, y + 48, 12, ink, 600);
       const amount = recording ? clamp((t - 4.5) / 5.7) : clamp(raw / 6.6);
-      box(x + 16, y + 61, w - 32, 3, 1, "#344b5c");
+      box(x + 16, y + 61, w - 32, 3, 1, "#3e4652");
       if (amount > 0) box(x + 16, y + 61, (w - 32) * amount, 3, 1, color);
       circle(x + 16 + (w - 32) * amount, y + 62, 3, color);
       ctx.restore();
@@ -348,21 +348,21 @@
   function touch(x, y, age) {
     if (age < 0 || age > 1.05) return;
     const p = clamp(age / 1.05);
-    circle(x, y, 16 + p * 25, `rgba(145,245,182,${0.7 * (1 - p)})`, 2);
-    circle(x, y, 12, "#91f5b624"); circle(x, y, 6, "#ebfff2");
-    circle(x, y, 9 + p * 16, `rgba(220,255,230,${0.55 * (1 - p)})`, 1);
+    circle(x, y, 16 + p * 25, `rgba(210,217,228,${0.7 * (1 - p)})`, 2);
+    circle(x, y, 12, "#d2d9e424"); circle(x, y, 6, "#ffffff");
+    circle(x, y, 9 + p * 16, `rgba(240,243,249,${0.55 * (1 - p)})`, 1);
   }
   function gestures(u, replay) {
     const swipe = smooth(1.8, 4.4, u);
-    if (replay) trail(1, "#91f5b626", 2);
-    trail(swipe, replay ? "#d3ffe3" : mint, 3.5);
-    if (u >= 0.9) circle(88, 226, 5, "#91f5b640");
-    if (u >= 5.4) circle(219, 469, 5, "#91f5b640");
+    if (replay) trail(1, "#d2d9e426", 2);
+    trail(swipe, replay ? "#eef2f8" : silver, 3.5);
+    if (u >= 0.9) circle(88, 226, 5, "#d2d9e440");
+    if (u >= 5.4) circle(219, 469, 5, "#d2d9e440");
     touch(88, 226, u - 0.7);
     touch(219, 469, u - 5.2);
     if (u >= 1.8 && u < 4.4) {
       const [x, y] = strokePoint(swipe);
-      circle(x, y, 17, "#91f5b623"); circle(x, y, 8, ink); circle(x, y, 11, mint, 2);
+      circle(x, y, 17, "#d2d9e423"); circle(x, y, 8, ink); circle(x, y, 11, silver, 2);
     }
   }
 
@@ -372,43 +372,43 @@
     const y = (portrait ? 375 : 66) + Math.sin(t * 0.8) * 3;
     ctx.save(); ctx.translate(x, y); ctx.scale(scale, scale);
     ctx.shadowColor = "#00000070"; ctx.shadowBlur = 42; ctx.shadowOffsetY = 20;
-    box(0, 0, 326, 558, 36, "#060b08", "#486b52"); ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
-    box(-4, 132, 5, 58, 3, "#4b6558"); box(-4, 214, 5, 30, 3, "#32473b");
-    box(10, 10, 306, 537, 29, "#0e1913");
-    box(114, 17, 98, 15, 10, "#050906");
+    box(0, 0, 326, 558, 36, "#080a0d", "#657080"); ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+    box(-4, 132, 5, 58, 3, "#66707d"); box(-4, 214, 5, 30, 3, "#414954");
+    box(10, 10, 306, 537, 29, "#12161d");
+    box(114, 17, 98, 15, 10, "#060709");
     text("9:41", 25, 34, 10, muted, 500);
-    box(282, 25, 16, 8, 2, "#8ba995");
+    box(282, 25, 16, 8, 2, "#a8b2c1");
     brand(26, 57, 29); text("TouchValidator", 65, 78, 18, ink, 650);
     text("Pantalla de prueba", 26, 110, 15, muted, 400);
     const replay = phase === "replay";
     const recording = phase === "record";
     const state = replayState(t);
-    box(26, 132, 274, 34, 9, recording ? "#4f29222d" : "#25493350", recording ? "#704637" : "#385843");
-    circle(42, 149, 4, recording ? "#efa988" : mint);
-    text(recording ? "GRABANDO" : replay ? state.paused ? "SESIÓN PAUSADA" : state.waiting ? "SECUENCIA LISTA" : state.finished ? "2 CICLOS COMPLETADOS" : `REPRODUCIENDO · CICLO ${state.cycle} / 2` : "RUTINA GUARDADA", 54, 153, 11, recording ? "#eec7b4" : mint, 600);
-    box(26, 190, 274, 72, 12, "#192b20", "#304837");
-    circle(52, 226, 11, "#91f5b614"); circle(52, 226, 4, mint);
+    box(26, 132, 274, 34, 9, recording ? "#2d36422d" : "#303a4550", recording ? "#586575" : "#4b5562");
+    circle(42, 149, 4, recording ? "#b8c2cf" : silver);
+    text(recording ? "GRABANDO" : replay ? state.paused ? "SESIÓN PAUSADA" : state.waiting ? "SECUENCIA LISTA" : state.finished ? "2 CICLOS COMPLETADOS" : `REPRODUCIENDO · CICLO ${state.cycle} / 2` : "RUTINA GUARDADA", 54, 153, 11, recording ? "#dfe5ec" : silver, 600);
+    box(26, 190, 274, 72, 12, "#20242b", "#3a424d");
+    circle(52, 226, 11, "#d2d9e414"); circle(52, 226, 4, silver);
     text("Primer toque", 74, 219, 17, ink, 550); text("Empieza aquí", 74, 241, 12, muted, 400);
-    box(26, 281, 274, 133, 12, "#14271c", "#304837");
+    box(26, 281, 274, 133, 12, "#191d24", "#3a424d");
     text("Desliza a la derecha", 43, 309, 15, ink, 500);
-    for (let i = 0; i < 4; i++) {ctx.beginPath(); ctx.moveTo(45, 332 + i * 18); ctx.lineTo(281, 332 + i * 18); ctx.strokeStyle = "#35544060"; ctx.lineWidth = 1; ctx.stroke();}
-    box(26, 437, 274, 65, 12, "#213b29", "#4a7157");
+    for (let i = 0; i < 4; i++) {ctx.beginPath(); ctx.moveTo(45, 332 + i * 18); ctx.lineTo(281, 332 + i * 18); ctx.strokeStyle = "#4f5a6960"; ctx.lineWidth = 1; ctx.stroke();}
+    box(26, 437, 274, 65, 12, "#262c34", "#687484");
     text("Último toque", 47, 475, 17, ink, 550);
-    circle(268, 469, 10, "#91f5b620"); check(268, 469, 1);
-    box(125, 529, 77, 4, 2, "#6d907950");
+    circle(268, 469, 10, "#d2d9e420"); check(268, 469, 1);
+    box(125, 529, 77, 4, 2, "#7c879950");
     let u = phase === "record" ? Math.max(0, t - 4.5) : 6.6;
     if (replay) u = state.raw;
     gestures(u, replay);
-    if (phase === "save" || replay && state.paused) box(10, 10, 306, 537, 29, "#06100c78");
+    if (phase === "save" || replay && state.paused) box(10, 10, 306, 537, 29, "#090c1178");
     floatingPanel(t, phase, u);
     if (replay && t >= 18.2 && t < 20.45) {
       ctx.save(); ctx.globalAlpha *= smooth(18.2, 18.4, t) * (1 - smooth(20.15, 20.45, t));
-      touch(-2, 158, t - 18.28); box(-69, 111, 59, 26, 6, "#1c3425", "#537a5d");
-      text("VOL −", -39, 129, 10, mint, 650, "center"); ctx.restore();
+      touch(-2, 158, t - 18.28); box(-69, 111, 59, 26, 6, "#242b35", "#697689");
+      text("VOL −", -39, 129, 10, silver, 650, "center"); ctx.restore();
     }
     const pose = handPose(t, phase);
     if (pose) hand(pose.point[0], pose.point[1], pose.press, pose.opacity, pose.angle);
-    ctx.save(); ctx.strokeStyle = "#cae6d344"; ctx.lineWidth = 1.2;
+    ctx.save(); ctx.strokeStyle = "#e4e9f244"; ctx.lineWidth = 1.2;
     ctx.beginPath(); ctx.moveTo(17, 96); ctx.lineTo(17, 37); ctx.quadraticCurveTo(17, 17, 42, 17); ctx.stroke(); ctx.restore();
     ctx.restore();
   }
@@ -418,10 +418,10 @@
     ctx.save(); ctx.globalAlpha = alpha;
     const left = portrait ? 47 : 76;
     const top = portrait ? 73 : 96;
-    text(stage.label, left, top, portrait ? 21 : 16, mint, 600);
+    text(stage.label, left, top, portrait ? 21 : 16, silver, 600);
     const stageStart = stage.key === "record" ? 3.4 : stage.key === "save" ? 10.2 : 13.4;
     const float = (1 - smooth(stageStart, stageStart + 0.55, t)) * 14;
-    stage.title.forEach((line, i) => text(line, left, top + (portrait ? 74 : 94) + i * (portrait ? 67 : 74) + float, portrait ? 57 : 64, i ? mint : ink, 650));
+    stage.title.forEach((line, i) => text(line, left, top + (portrait ? 74 : 94) + i * (portrait ? 67 : 74) + float, portrait ? 57 : 64, i ? silver : ink, 650));
     const state = replayState(t);
     const description = {
       record: ["Dos toques. Un deslizamiento.", "El panel flotante registra cada paso."],
@@ -436,17 +436,17 @@
       const status = stage.key === "record" ? t < 4.5 ? "ABRE EL PANEL PARA EMPEZAR" : "CAPTURANDO TUS GESTOS"
         : stage.key === "save" ? t < 12.4 ? "DALE UN NOMBRE A TU SECUENCIA" : "3 PASOS GUARDADOS"
         : state.paused ? "PAUSADA · CONTINÚA DESDE EL PANEL" : state.finished ? "2 CICLOS COMPLETADOS" : state.waiting ? "LISTA PARA REPRODUCIR" : `CICLO ${state.cycle} DE 2 · VELOCIDAD 2×`;
-      circle(left + 4, 414, 3, stage.key === "record" ? coral : mint);
+      circle(left + 4, 414, 3, stage.key === "record" ? recordAccent : silver);
       text(status, left + 16, 418, 10, muted, 600);
-      if (active) waveform(left + 326, 413, 124, t, stage.key === "record" ? coral : mint);
+      if (active) waveform(left + 326, 413, 124, t, stage.key === "record" ? recordAccent : silver);
       ["Primer toque", "Deslizamiento", "Último toque"].forEach((label, i) => {
         const start = [0.7, 1.8, 5.2][i], end = [1.4, 4.4, 5.9][i];
         const p = smooth(start, end, raw);
-        box(left, 443 + i * 57, 458, 46, 10, p ? "#1c382680" : "#14241b80", p >= 1 ? "#426950" : "#294634");
+        box(left, 443 + i * 57, 458, 46, 10, p ? "#282f3980" : "#1b1f2580", p >= 1 ? "#656f7e" : "#363d47");
         text(`0${i + 1}`, left + 17, 472 + i * 57, 13, muted, 400);
         text(label, left + 58, 473 + i * 57, 16, ink, 500);
-        box(left + 313, 464 + i * 57, 99, 4, 2, "#34513d");
-        if (p > 0) box(left + 313, 464 + i * 57, 99 * p, 4, 2, mint);
+        box(left + 313, 464 + i * 57, 99, 4, 2, "#474f5b");
+        if (p > 0) box(left + 313, 464 + i * 57, 99 * p, 4, 2, silver);
         if (p >= 1) check(left + 436, 467 + i * 57, 1);
       });
     }
@@ -454,8 +454,8 @@
     if (stage.key === "replay") {
       const x = portrait ? width / 2 - 143 : 864;
       const y = portrait ? 1090 : 678;
-      box(x, y - 28, 286, 39, 19, "#142b1d", "#416a4c");
-      text(state.paused ? "VOL −     /     SESIÓN PAUSADA" : "VELOCIDAD 2×     /     2 CICLOS", x + 143, y - 3, portrait ? 15 : 13, mint, 600, "center");
+      box(x, y - 28, 286, 39, 19, "#202731", "#566170");
+      text(state.paused ? "VOL −     /     SESIÓN PAUSADA" : "VELOCIDAD 2×     /     2 CICLOS", x + 143, y - 3, portrait ? 15 : 13, silver, 600, "center");
     }
     ctx.restore();
   }
