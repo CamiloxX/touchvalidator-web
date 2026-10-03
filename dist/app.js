@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
       image.src = screen.file;
       image.alt = screen.alt;
       document.getElementById("screen-caption").textContent = screen.caption;
+      document.getElementById("screen-counter").textContent = `0${Object.keys(screens).indexOf(button.dataset.screen) + 1} / 03`;
       document.querySelectorAll("[data-screen]").forEach(item => {
         const selected = item === button;
         item.classList.toggle("active", selected);
@@ -170,16 +171,76 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll("[data-download-platform]").forEach(link => {
+    link.addEventListener("click", () => selectPlatform(link.dataset.downloadPlatform));
+  });
+
   const menuToggle = document.querySelector(".menu-toggle");
   const mobileNav = document.getElementById("mobile-nav");
-  function closeMenu() {mobileNav.hidden = true; menuToggle.setAttribute("aria-expanded", "false"); menuToggle.setAttribute("aria-label", "Abrir navegación");}
+  function closeMenu() {
+    mobileNav.hidden = true;
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir navegación");
+    updateDock();
+  }
   menuToggle.addEventListener("click", () => {
     const opened = menuToggle.getAttribute("aria-expanded") !== "true";
     mobileNav.hidden = !opened;
     menuToggle.setAttribute("aria-expanded", String(opened));
     menuToggle.setAttribute("aria-label", opened ? "Cerrar navegación" : "Abrir navegación");
+    updateDock();
   });
   mobileNav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
   document.addEventListener("keydown", event => {if (event.key === "Escape" && !mobileNav.hidden) {closeMenu(); menuToggle.focus();}});
+  document.addEventListener("pointerdown", event => {
+    if (!mobileNav.hidden && !event.target.closest(".header")) closeMenu();
+  });
+  matchMedia("(min-width: 1001px)").addEventListener("change", event => { if (event.matches) closeMenu(); });
+
+  const dock = document.getElementById("mobile-dock");
+  const dockSections = new Map([["inicio", true], ["descargar", false]]);
+  function updateDock() {
+    dock.hidden = !mobileNav.hidden || [...dockSections.values()].some(Boolean);
+  }
+  if ("IntersectionObserver" in window) {
+    const dockObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => dockSections.set(entry.target.id, entry.isIntersecting));
+      updateDock();
+    });
+    dockSections.forEach((visible, id) => dockObserver.observe(document.getElementById(id)));
+  }
+
+  const faqSearch = document.getElementById("faq-search");
+  const faqItems = [...document.querySelectorAll(".faq-list details")];
+  const faqStatus = document.getElementById("faq-search-status");
+  const faqEmpty = document.getElementById("faq-empty");
+  const normalize = value => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const faqText = faqItems.map(item => normalize(item.textContent));
+  let savedFaqState = null;
+  function filterQuestions() {
+    const query = normalize(faqSearch.value.trim());
+    if (query && !savedFaqState) savedFaqState = faqItems.map(item => item.open);
+    const words = query.split(/\s+/).filter(Boolean);
+    let count = 0;
+    faqItems.forEach((item, index) => {
+      const matches = words.every(word => faqText[index].includes(word));
+      item.hidden = !matches;
+      if (matches) count++;
+      if (query) item.open = matches;
+      else if (savedFaqState) item.open = savedFaqState[index];
+    });
+    faqEmpty.hidden = count !== 0;
+    faqStatus.textContent = query ? `${count} ${count === 1 ? "pregunta encontrada" : "preguntas encontradas"}` : "";
+    if (!query) savedFaqState = null;
+  }
+  faqSearch.addEventListener("input", filterQuestions);
+  faqSearch.addEventListener("keydown", event => {
+    if (event.key === "Escape") { faqSearch.value = ""; filterQuestions(); }
+  });
+  document.getElementById("faq-clear").addEventListener("click", () => {
+    faqSearch.value = "";
+    filterQuestions();
+    faqSearch.focus();
+  });
   document.getElementById("year").textContent = String(new Date().getFullYear());
 }, {once: true});

@@ -10,6 +10,8 @@ Diseño adaptable a móvil y escritorio, con una paleta de negro, gris y plata b
 
 El selector «Apariencia» de la cabecera ofrece los modos claro, oscuro y automático, con iconos de sol, luna y pantalla, y una marca en la opción elegida. El menú se puede manejar con flechas, Inicio, Fin, Enter y Escape. La elección se guarda en el navegador, se sincroniza entre pestañas de esta web y se aplica antes de mostrar la página. En automático, la apariencia sigue los cambios del tema del dispositivo.
 
+La portada permite elegir directamente Android o iOS y explorar tres capturas reales de Android. La página incluye tarjetas de funciones, una guía de primeros pasos y búsqueda de preguntas frecuentes que ignora diferencias de acentos y mayúsculas. En móvil, una barra de accesos a la demo y las descargas aparece al salir de la portada y se oculta mientras se ven las descargas o está abierta la navegación. El diseño contempla pantallas desde 320 px, áreas táctiles amplias y la zona segura inferior del dispositivo.
+
 ## Vista local
 
 Desde la carpeta del proyecto:

@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f5f6f8">
-  <script src="app.js?v=theme-icons-5"></script>
+  <script src="app.js?v=design-6"></script>
   <meta name="description" content="TouchValidator de JABASYS. Graba toques y deslizamientos, guarda tus secuencias y vuelve a ejecutarlas. Disponible para Android con root e iOS con jailbreak.">
   <meta property="og:title" content="TouchValidator — Tus gestos, a tu manera.">
   <meta property="og:description" content="Graba tus gestos. Guarda la secuencia. Elige cuándo y cómo repetirla.">
@@ -16,7 +16,7 @@
   <title>TouchValidator — Tus gestos, a tu manera.</title>
   <link rel="icon" type="image/png" href="assets/brand.png">
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=theme-icons-5">
+  <link rel="stylesheet" href="styles.css?v=design-6">
   <script src="intro.js?v=silver-3" defer></script>
 </head>
 <body>
@@ -24,7 +24,7 @@
   <header class="header">
     <div class="container nav">
       <a class="brand" href="#inicio" aria-label="TouchValidator, inicio"><img src="assets/brand.png" alt="" width="38" height="38"><span>TouchValidator<small>UN PROYECTO DE JABASYS</small></span></a>
-      <nav aria-label="Navegación principal"><a href="#funciones">La app</a><a href="#introduccion">Demostración</a><a href="#preguntas">Preguntas</a></nav>
+      <nav aria-label="Navegación principal"><a href="#funciones">La app</a><a href="#introduccion">Demo</a><a href="#primeros-pasos">Guía rápida</a><a href="#preguntas">Preguntas</a></nav>
       <a class="button button-small nav-download" href="#descargar">Descargar <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
       <div class="theme-picker">
         <button class="theme-trigger" id="theme-trigger" type="button" aria-label="Cambiar apariencia: Automático" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu">
@@ -43,35 +43,37 @@
       </div>
       <button class="menu-toggle" type="button" aria-label="Abrir navegación" aria-expanded="false" aria-controls="mobile-nav"><svg aria-hidden="true"><use href="#icon-menu"/></svg></button>
     </div>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Navegación móvil" hidden><a href="#funciones">La app</a><a href="#introduccion">Demostración</a><a href="#preguntas">Preguntas</a><a href="#descargar">Descargar</a></nav>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Navegación móvil" hidden><a href="#funciones"><svg aria-hidden="true"><use href="#icon-touch"/></svg> La app <span>01</span></a><a href="#introduccion"><svg aria-hidden="true"><use href="#icon-play"/></svg> Demostración <span>02</span></a><a href="#primeros-pasos"><svg aria-hidden="true"><use href="#icon-guide"/></svg> Guía rápida <span>03</span></a><a href="#preguntas"><svg aria-hidden="true"><use href="#icon-help"/></svg> Preguntas <span>04</span></a><a href="#descargar"><svg aria-hidden="true"><use href="#icon-download"/></svg> Descargar <span>05</span></a></nav>
   </header>
   <main id="contenido">
     <section class="hero container" id="inicio" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> PARA ANDROID &amp; IOS</p>
+        <p class="eyebrow hero-badge"><span class="status-dot" aria-hidden="true"></span> TUS RUTINAS, BAJO CONTROL</p>
         <h1 id="hero-title">Tus gestos.<br>Una vez.<br><em>A tu manera.</em></h1>
-        <p class="hero-description">Graba lo que haces en pantalla y conviértelo en una secuencia. Guárdala, ajusta el ritmo y vuelve a ejecutarla cuando la necesites.</p>
-        <div class="hero-actions"><a class="button" href="#descargar">Descargar TouchValidator <svg aria-hidden="true"><use href="#icon-download"/></svg></a><a class="text-link" href="#introduccion"><svg aria-hidden="true"><use href="#icon-play"/></svg> Ver cómo funciona</a></div>
-        <p class="hero-requirements">Necesitas root en Android o jailbreak en iOS.</p>
+        <p class="hero-description">Graba tus toques y deslizamientos. Guarda una rutina y repítela al ritmo que tú decidas.</p>
+        <div class="hero-actions"><a class="button" href="#descargar">Elegir mi versión <svg aria-hidden="true"><use href="#icon-download"/></svg></a><a class="button button-secondary" href="#introduccion"><svg aria-hidden="true"><use href="#icon-play"/></svg> Ver demo</a></div>
+        <div class="hero-platforms" aria-label="Versiones disponibles"><a href="#descargar" data-download-platform="android"><svg aria-hidden="true"><use href="#icon-android"/></svg><span>Android <small>con root</small></span><svg class="platform-arrow" aria-hidden="true"><use href="#icon-arrow"/></svg></a><a href="#descargar" data-download-platform="ios"><svg aria-hidden="true"><use href="#icon-apple"/></svg><span>iOS <small>con jailbreak</small></span><svg class="platform-arrow" aria-hidden="true"><use href="#icon-arrow"/></svg></a></div>
+        <p class="hero-requirements">Versiones de prueba · Instalación directa</p>
       </div>
       <div class="hero-showcase">
-        <div class="showcase-heading"><span>UNA MIRADA A LA APP</span><span>01 — 03</span></div>
+        <div class="showcase-heading"><span><i class="status-dot" aria-hidden="true"></i> CAPTURAS REALES / ANDROID</span><span id="screen-counter">01 / 03</span></div>
         <div class="screen-stage">
           <div class="gesture-orbit" aria-hidden="true"></div>
           <svg class="gesture-path" aria-hidden="true" viewBox="0 0 520 570"><path d="M30 400C-5 170 435 30 473 163S208 533 141 408"/><circle cx="30" cy="400" r="8"/><path d="m126 407 15 1 2 16"/></svg>
           <span class="gesture-label" aria-hidden="true">Tu recorrido,<br><em>listo para repetir.</em></span>
           <div class="screen-wrap"><img id="app-screen" src="assets/home.png" alt="Pantalla principal real de TouchValidator Android con verificación de root y selección de aplicaciones" width="922" height="2048" fetchpriority="high"></div>
+          <div class="gesture-card" aria-hidden="true"><span class="gesture-card-icon"><svg><use href="#icon-check"/></svg></span><div><strong>Tu siguiente rutina</strong><span>Toque · Desliza · Repite</span></div><svg class="gesture-card-trail" viewBox="0 0 100 25"><path d="M3 19h20q8 0 8-8t8-8h18q8 0 8 8t8 8h24"/><circle cx="3" cy="19" r="2"/><circle cx="97" cy="19" r="2"/></svg></div>
           <span class="screen-version">ANDROID<br><strong>0.1.10</strong></span>
         </div>
-        <div class="screen-picker" role="group" aria-label="Explorar capturas de la app"><button type="button" class="active" data-screen="home" aria-pressed="true"><span>01</span> Inicio</button><button type="button" data-screen="library" aria-pressed="false"><span>02</span> Biblioteca</button><button type="button" data-screen="playback" aria-pressed="false"><span>03</span> Reproducción</button></div>
+        <div class="screen-picker" role="group" aria-label="Explorar capturas de la app"><button type="button" class="active" data-screen="home" aria-pressed="true"><svg aria-hidden="true"><use href="#icon-home"/></svg> Inicio</button><button type="button" data-screen="library" aria-pressed="false"><svg aria-hidden="true"><use href="#icon-library"/></svg> Biblioteca</button><button type="button" data-screen="playback" aria-pressed="false"><svg aria-hidden="true"><use href="#icon-play"/></svg> Controles</button></div>
         <p class="screen-caption" id="screen-caption" aria-live="polite">Captura real de la app · Android 0.1.10</p>
       </div>
     </section>
-    <div class="product-line container"><span>GRABAR. GUARDAR. REPETIR.</span><p>Del primer toque al último deslizamiento.</p><a href="#funciones" aria-label="Explorar las funciones de TouchValidator"><svg aria-hidden="true"><use href="#icon-down"/></svg></a></div>
+    <div class="capability-strip container" aria-label="Funciones de TouchValidator"><p>Pequeños gestos.<br><strong>Muchas posibilidades.</strong></p><dl><div><dt>Pasos por secuencia</dt><dd>Hasta <strong>500</strong></dd></div><div><dt>Grabaciones guardadas</dt><dd>Hasta <strong>100</strong></dd></div><div><dt>Velocidad ajustable</dt><dd><strong>0.25× — 2×</strong></dd></div></dl></div>
     <section class="section container app-section" id="funciones" aria-labelledby="features-title">
       <div class="section-heading"><p class="eyebrow">LA APP, POR DENTRO</p><h2 id="features-title">Una rutina que<br>puedes hacer <em>tuya.</em></h2><p>Cada recorrido tiene sus tiempos. <br>TouchValidator te permite conservarlos <br>y decidir cómo repetirlos.</p></div>
       <div class="app-layout">
-        <figure class="library-showcase"><div class="library-image"><img src="assets/library.png" alt="Biblioteca real de TouchValidator con sus grabaciones guardadas" width="922" height="2048" loading="lazy"></div><figcaption><span>BIBLIOTECA DE GRABACIONES</span><span>Captura real / Android</span></figcaption></figure>
+        <figure class="library-showcase"><div class="library-heading"><span class="eyebrow">UN LUGAR PARA CADA RUTINA</span><p>Grábala una vez.<br>Encuéntrala cuando quieras.</p></div><div class="library-image"><img src="assets/library.png" alt="Biblioteca real de TouchValidator con sus grabaciones guardadas" width="922" height="2048" loading="lazy"></div><figcaption><span>BIBLIOTECA DE GRABACIONES</span><span>Captura real / Android</span></figcaption></figure>
         <div class="feature-list">
           <article class="feature-row"><span class="feature-number">01</span><div><h3>Empieza con tus gestos.</h3><p>Toques, deslizamientos, pulsaciones largas y pausas. Graba el recorrido de tu dedo desde el panel flotante.</p><span class="feature-detail">Hasta 500 pasos por secuencia</span></div><svg aria-hidden="true"><use href="#icon-touch"/></svg></article>
           <article class="feature-row"><span class="feature-number">02</span><div><h3>Guarda. Revisa. Ajusta.</h3><p>Ponle un nombre, edita los pasos y encuentra cada grabación en tu biblioteca. También puedes exportar un respaldo.</p><span class="feature-detail">Hasta 100 grabaciones guardadas</span></div><svg aria-hidden="true"><use href="#icon-library"/></svg></article>
@@ -93,8 +95,16 @@
         <p class="demo-note">TouchValidator repite coordenadas y tiempos. Si la pantalla cambia, revisa tu secuencia antes de ejecutarla.</p>
       </div>
     </section>
+    <section class="section container quickstart-section" id="primeros-pasos" aria-labelledby="quickstart-title">
+      <div class="section-heading"><p class="eyebrow">TU PRIMERA SECUENCIA</p><h2 id="quickstart-title">Empieza sencillo.<br><em>Hazlo a tu manera.</em></h2><p>Tres pasos para familiarizarte con TouchValidator y preparar tu primera rutina.</p></div>
+      <ol class="quickstart-grid">
+        <li><div class="quickstart-top"><span class="quickstart-icon"><svg aria-hidden="true"><use href="#icon-system"/></svg></span><span>01</span></div><h3>Prepara tu dispositivo.</h3><p>Elige Android o iOS, revisa los requisitos y activa los permisos que necesita la app.</p><a class="text-link" href="#descargar">Ver requisitos <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a></li>
+        <li><div class="quickstart-top"><span class="quickstart-icon"><svg aria-hidden="true"><use href="#icon-touch"/></svg></span><span>02</span></div><h3>Graba algo pequeño.</h3><p>Empieza con dos toques y un deslizamiento en la pantalla de prueba. Guarda la secuencia con un nombre.</p><a class="text-link" href="#introduccion">Mirar la demostración <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a></li>
+        <li><div class="quickstart-top"><span class="quickstart-icon"><svg aria-hidden="true"><use href="#icon-repeat"/></svg></span><span>03</span></div><h3>Prueba y ajusta.</h3><p>Revisa la pantalla de destino y autoriza un ciclo. Ajusta los tiempos y la velocidad hasta encontrar tu ritmo.</p><span class="quickstart-tip"><svg aria-hidden="true"><use href="#icon-pause"/></svg> Volumen abajo para pausar</span></li>
+      </ol>
+    </section>
     <section class="section container download-section" id="descargar" aria-labelledby="download-title">
-      <div class="download-intro"><p class="eyebrow">PRUÉBALO EN TU DISPOSITIVO</p><h2 id="download-title">Tu próxima<br>rutina empieza<br><em>aquí.</em></h2><p>Elige tu sistema y revisa los requisitos antes de instalar. Estas son las versiones de prueba disponibles.</p><div class="platform-tabs" role="tablist" aria-label="Sistema operativo"><button type="button" id="tab-android" class="active" role="tab" aria-selected="true" aria-controls="platform-panel" data-platform="android"><svg aria-hidden="true"><use href="#icon-android"/></svg> Android</button><button type="button" id="tab-ios" role="tab" aria-selected="false" aria-controls="platform-panel" tabindex="-1" data-platform="ios"><svg aria-hidden="true"><use href="#icon-apple"/></svg> iOS</button></div><p class="download-local">Archivo de instalación · Descarga directa</p></div>
+      <div class="download-intro"><p class="eyebrow">PRUÉBALO EN TU DISPOSITIVO</p><h2 id="download-title">Tu próxima<br>rutina empieza<br> <em>aquí.</em></h2><p>Elige tu sistema y revisa los requisitos antes de instalar. Estas son las versiones de prueba disponibles.</p><div class="platform-tabs" role="tablist" aria-label="Sistema operativo"><button type="button" id="tab-android" class="active" role="tab" aria-selected="true" aria-controls="platform-panel" data-platform="android"><svg aria-hidden="true"><use href="#icon-android"/></svg> Android</button><button type="button" id="tab-ios" role="tab" aria-selected="false" aria-controls="platform-panel" tabindex="-1" data-platform="ios"><svg aria-hidden="true"><use href="#icon-apple"/></svg> iOS</button></div><p class="download-local">Archivo de instalación · Descarga directa</p></div>
       <div class="download-card" id="platform-panel" role="tabpanel" aria-labelledby="tab-android">
         <div class="download-card-top"><img src="assets/brand.png" alt="" width="48" height="48"><div><h3 id="download-name">TouchValidator para Android</h3><p id="download-version">Versión 0.1.10 · APK · 509 KB</p></div><span class="version-tag">PRUEBAS</span></div>
         <p class="requirement-title">Lo que necesitas</p><ul class="requirement-list" id="requirement-list"><li><svg aria-hidden="true"><use href="#icon-check"/></svg> Android 9 o posterior</li><li><svg aria-hidden="true"><use href="#icon-check"/></svg> Acceso root autorizado con Magisk / su</li><li><svg aria-hidden="true"><use href="#icon-check"/></svg> Permiso para mostrar sobre otras apps</li></ul>
@@ -104,16 +114,18 @@
         <div class="download-extras"><a href="downloads/SHA256SUMS.txt" download>Comprobar archivo (SHA-256) <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a></div>
       </div>
     </section>
-    <section class="section container faq-section" id="preguntas" aria-labelledby="faq-title"><div><p class="eyebrow">ANTES DE EMPEZAR</p><h2 id="faq-title">Las dudas<br><em>habituales.</em></h2></div><div class="faq-list">
+    <section class="section container faq-section" id="preguntas" aria-labelledby="faq-title"><div class="faq-intro"><p class="eyebrow">ANTES DE EMPEZAR</p><h2 id="faq-title">Las dudas<br> <em>habituales.</em></h2><p class="faq-intro-copy">Encuentra una respuesta antes de preparar tu primera secuencia.</p><label class="faq-search"><svg aria-hidden="true"><use href="#icon-search"/></svg><span class="visually-hidden">Buscar en las preguntas frecuentes</span><input id="faq-search" type="search" placeholder="Busca: iOS, root, grabaciones…" autocomplete="off"></label><p class="faq-search-status" id="faq-search-status" role="status"></p></div><div class="faq-list">
       <details><summary>¿Funciona en mi teléfono?<span aria-hidden="true">+</span></summary><p>Android necesita root y una ROM compatible con la captura e inyección de gestos. Se ha probado en un POCO F5 Pro. iOS necesita un jailbreak rootless compatible con Dopamine. La compatibilidad depende del dispositivo y del sistema.</p></details>
       <details><summary>¿Cómo se instala?<span aria-hidden="true">+</span></summary><p>Descarga el APK para Android o el DEB para iOS desde esta página. En la sección de descarga encontrarás los pasos para tu sistema. Las versiones actuales se distribuyen por instalación directa.</p></details>
       <details><summary>¿Puedo editar una grabación?<span aria-hidden="true">+</span></summary><p>Sí. Puedes cambiar coordenadas y tiempos, ordenar pasos, añadir pausas y guardar una copia. La biblioteca también permite renombrar, duplicar y exportar tus secuencias.</p></details>
       <details><summary>¿Cómo detengo una sesión?<span aria-hidden="true">+</span></summary><p>Mantén Volumen abajo para pausar o acceder a los controles. Usa «Detener» o «Terminar sesión» para finalizar. En Android también tienes «Detener» en la notificación del servicio.</p></details>
       <details><summary>¿Reconoce lo que aparece en pantalla?<span aria-hidden="true">+</span></summary><p>La app reproduce coordenadas y tiempos; no reconoce botones. Si cambia la interfaz, comprueba la grabación de nuevo. Usa primero la pantalla de prueba y conserva compras, pagos y cambios de cuenta como acciones manuales.</p></details>
       <details><summary>¿Qué implica que sean versiones de prueba?<span aria-hidden="true">+</span></summary><p>Android usa una compilación de desarrollo. La versión iOS tiene un problema conocido de autenticación de su servicio local y debe usarse únicamente en un dispositivo de pruebas hasta corregirlo.</p></details>
+      <div class="faq-empty" id="faq-empty" hidden><svg aria-hidden="true"><use href="#icon-search"/></svg><h3>No encontramos esa pregunta.</h3><p>Prueba con «Android», «iOS», «instalar» o «gestos».</p><button type="button" id="faq-clear" class="text-link">Ver todas las preguntas <svg aria-hidden="true"><use href="#icon-arrow"/></svg></button></div>
     </div></section>
   </main>
   <footer class="footer"><div class="container footer-main"><a class="brand" href="#inicio"><img src="assets/brand.png" alt="" width="38" height="38"><span>TouchValidator<small>UN PROYECTO DE JABASYS</small></span></a><p>Tus gestos, a tu manera.</p><a class="text-link" href="#inicio">Volver arriba <svg aria-hidden="true"><use href="#icon-up"/></svg></a></div><div class="container footer-bottom"><span>© <span id="year">2026</span> JABASYS. Todos los derechos reservados.</span><span>Android 0.1.10 / iOS 0.10.1</span></div></footer>
+  <nav class="mobile-dock" id="mobile-dock" aria-label="Accesos rápidos" hidden><a href="#introduccion"><svg aria-hidden="true"><use href="#icon-play"/></svg> Ver demo</a><a class="dock-download" href="#descargar"><svg aria-hidden="true"><use href="#icon-download"/></svg> Descargar</a></nav>
   <svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true"><defs>
     <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4"/></symbol>
     <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
@@ -121,6 +133,10 @@
     <symbol id="icon-up" viewBox="0 0 24 24"><path d="M12 20V4m-6 6 6-6 6 6"/></symbol>
     <symbol id="icon-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
     <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11H3zM9 21v-8h6v8"/></symbol>
+    <symbol id="icon-guide" viewBox="0 0 24 24"><path d="M12 5v16M3 3h5a4 4 0 0 1 4 2 4 4 0 0 1 4-2h5v16h-5a4 4 0 0 0-4 2 4 4 0 0 0-4-2H3z"/></symbol>
+    <symbol id="icon-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1 .7-1.5 1-1.5 2M12 17h.01"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
     <symbol id="icon-light" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
     <symbol id="icon-dark" viewBox="0 0 24 24"><path d="M20.5 13.5A9 9 0 0 1 10.5 3a9 9 0 1 0 10 10.5Z"/></symbol>
     <symbol id="icon-system" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol>
